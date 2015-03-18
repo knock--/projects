@@ -16,7 +16,6 @@
                 return;
             }
 
-
             if (target === 1) {
                 fib.push(target);
                 console.log(fib);
