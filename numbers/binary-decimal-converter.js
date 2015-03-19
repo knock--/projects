@@ -1,7 +1,7 @@
 (function () {
     "use strict";
 
-    var num = prompt(),
+    var num = prompt("Enter a number to be converted to decimal or binary:"),
         convertFromBinary = true,
         conversion = i = 0,
         base = 2,
