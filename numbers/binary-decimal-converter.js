@@ -1,33 +1,27 @@
 (function () {
     "use strict";
 
-    var num = prompt("Enter a number to be converted to decimal or binary:"),
-        convertFromBinary = true,
+    var type = prompt("Convert to binary or decimal? (b or d)"),
+        num = prompt("Enter a number to be converted to decimal or binary:"),
         conversion = i = 0,
-        base = 2,
-        convertNumeral = function () {
-            return num[num.length - i - 1] * Math.pow(base, i);
-        };
+        base = type.toLowerCase() === "d" ? 2 : 10;
 
     if (!/^\d+$/.test(num)) {
         console.log("Please enter a binary or decimal number.");
         return;
     }
 
-    if (/[2-9]/.test(num)) {
-        convertFromBinary = false;
-        base = 10;
-    }
-
-    if (convertFromBinary) {
+    if (base === 2) {
         for (i = 0; i < num.length; i++) {
-            conversion += convertNumeral();
+            conversion += num[num.length - i - 1] * Math.pow(base, i);
         }
     } else {
-        for (i = 0; i < num.length; i++) {
-            conversion += convertNumeral();
+        conversion = [];
+        while (num > 1) {
+            conversion.push(Math.floor(num) % 2);
+            num /= 2;
         }
-
+        conversion = conversion.reverse().join("");
     }
 
     console.log(conversion);
